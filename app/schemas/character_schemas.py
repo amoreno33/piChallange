@@ -15,6 +15,7 @@ class Character_create(BaseModel):
 
 
 class Character_info_all(BaseModel):
+    id:int
     name : str
     height :int
     mass : int
@@ -23,6 +24,7 @@ class Character_info_all(BaseModel):
 
 
 class Character_info(BaseModel):
+    id:int
     name : str
     height :int
     mass : int

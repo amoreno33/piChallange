@@ -10,9 +10,7 @@ def create_character(db, new_data: Character_create):
     '''
     Create a new character
     '''
-    print(new_data)
     new_character = Character(
-                    CharacterId = new_data.id,
                     CharacterName = new_data.name,
                     CharacterHeight = new_data.height,
                     CharacterMass = new_data.mass,
@@ -32,11 +30,11 @@ def get_all_character(db):
     '''
 
     characters_items: List[Character]  = db.query(Character).all()
-    print(characters_items)
     character_db = []
     if characters_items is not None:
         for character in characters_items:
             new_character = Character_info_all(
+                id=character.Id,
                 name= character.CharacterName,
                 height=  character.CharacterHeight,
                 mass= character.CharacterMass,
@@ -54,9 +52,10 @@ def get_character(db, character_id):
     '''
     GET a character
     '''
-    character_db = db.query(Character).filter(Character.CharacterId == character_id).first()
+    character_db = db.query(Character).filter(Character.Id == character_id).first()
     if character_db is not None:
         character = Character_info(
+              id= character_db.id,
               name= character_db.CharacterName,
               height=  character_db.CharacterHeight,
               mass= character_db.CharacterMass,
@@ -75,7 +74,7 @@ def delete_character(db, character_id):
     '''
     if character_id is not None:
         try:
-            db.query(Character).filter(Character.CharacterId == character_id).delete()
+            db.query(Character).filter(Character.Id == character_id).delete()
             db.commit()
         except:
             raise HTTPException(status_code=status.HTTP_402_INTERNAL_SERVER_ERROR,
@@ -88,7 +87,7 @@ def validation_schema_character(db, character_id):
     '''
     Función que valida que el id no se repita.
     '''
-    character_id_db = db.query(Character.CharacterId).filter(Character.CharacterId == character_id).first()
+    character_id_db = db.query(Character.Id).filter(Character.Id == character_id).first()
     if character_id_db is None:
         return True
     else:
