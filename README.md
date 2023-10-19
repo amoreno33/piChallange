@@ -26,3 +26,6 @@ python -m venv venv
 pip install -r requirements.txt
 
 python main.py
+
+##Collection Postman
+https://drive.google.com/file/d/19DHBd1eLEleFJQ1H6YM6UwjgxsM_T-E_/view?usp=sharing
