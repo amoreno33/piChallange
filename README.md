@@ -1,5 +1,5 @@
 # piChallange
-El proyecto forma parte de un challange propuesto para la intención de cubrir un puesto en: PI Data Strategy & Consulting 
+
 
 Se solicita:
 Funciones disponibles para el usuario
